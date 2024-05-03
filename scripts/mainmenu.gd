@@ -20,7 +20,7 @@ func animate_sliding(direction: String):
 	if direction == "right":
 		_start_animation_right()
 
-var worlds = [world_1, world_2, world_3, world_4]
+@onready var worlds = [world_1, world_2, world_3, world_4]
 var world_indices = {world_1: 1, world_2: 2, world_3: 3, world_4: 4}
 var animation_in_progress = false
 
@@ -33,16 +33,16 @@ func _start_animation_right():
 				world_indices[world] += 1
 	for world in worlds:
 			if world_indices[world] == 1:
-				world.set_position(Vector2(-185, 0))
+				world.rect_position = Vector2(-185, 0)
 				world.show()
 			elif world_indices[world] == 2:
-				world.set_position(Vector2(0, 0))
+				world.rect_position = Vector2(0, 0)
 				world.show()
 			elif world_indices[world] == 3:
-				world.set_position(Vector2(185, 0))
+				world.rect_position = Vector2(185, 0)
 				world.show()
 			elif world_indices[world] == 4:
-				world.set_position(Vector2(185, 0))
+				world.rect_position = Vector2(185, 0)
 				world.hide()
 	animation_in_progress = false
 
