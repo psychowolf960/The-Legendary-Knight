@@ -1,4 +1,6 @@
+Panel
 HBoxContainer
+VBoxContainer
 TextureRect
 TextureButton
 Label
@@ -9,7 +11,4 @@ Button
 SpinBox
 RayCast2D
 Timer
-VBoxContainer
 Node2D
-Panel
-MarginContainer

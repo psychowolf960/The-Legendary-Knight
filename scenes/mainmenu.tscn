@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cedft3vy5hg68"]
+[gd_scene load_steps=9 format=3 uid="uid://cedft3vy5hg68"]
 
 [ext_resource type="Script" path="res://scripts/mainmenu.gd" id="1_qj2ne"]
 [ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="2_h05dh"]
@@ -29,6 +29,10 @@ expand_margin_left = 5.0
 expand_margin_top = 5.0
 expand_margin_right = 5.0
 expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_llkcd"]
+bg_color = Color(0.121569, 0.121569, 0.121569, 0.305882)
+expand_margin_top = 10.0
 
 [node name="mainmenu" type="Control"]
 layout_mode = 3
@@ -92,18 +96,23 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -243.345
+offset_left = -539.0
 offset_top = 30.0
-offset_right = -29.345
-offset_bottom = 184.0
+offset_right = -6.0
+offset_bottom = 203.0
 grow_horizontal = 2
 scale = Vector2(2, 2)
 script = ExtResource("3_rb1ce")
 
-[node name="World1" type="Control" parent="MarginContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="World1" type="Control" parent="MarginContainer2/HBoxContainer"]
+y_sort_enabled = true
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer2/World1"]
+[node name="Label2" type="Label" parent="MarginContainer2/HBoxContainer/World1"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -117,7 +126,7 @@ theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_8c08p")
 text = "World 1"
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer2/World1"]
+[node name="Label1" type="TextureRect" parent="MarginContainer2/HBoxContainer/World1"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -134,10 +143,10 @@ texture = ExtResource("3_tlb1w")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="World4" type="Control" parent="MarginContainer2"]
+[node name="World4" type="Control" parent="MarginContainer2/HBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer2/World4"]
+[node name="Level4" type="Label" parent="MarginContainer2/HBoxContainer/World4"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -150,7 +159,7 @@ theme_override_fonts/font = ExtResource("2_h05dh")
 theme_override_font_sizes/font_size = 24
 text = "World 4"
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer2/World4"]
+[node name="Level5" type="TextureRect" parent="MarginContainer2/HBoxContainer/World4"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -167,10 +176,10 @@ texture = ExtResource("3_tlb1w")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="World2" type="Control" parent="MarginContainer2"]
+[node name="World2" type="Control" parent="MarginContainer2/HBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer2/World2"]
+[node name="Label" type="Label" parent="MarginContainer2/HBoxContainer/World2"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -183,7 +192,7 @@ theme_override_fonts/font = ExtResource("2_h05dh")
 theme_override_font_sizes/font_size = 24
 text = "World 2"
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer2/World2"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer2/HBoxContainer/World2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -200,10 +209,10 @@ texture = ExtResource("3_tlb1w")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="World3" type="Control" parent="MarginContainer2"]
+[node name="World3" type="Control" parent="MarginContainer2/HBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer2/World3"]
+[node name="Label" type="Label" parent="MarginContainer2/HBoxContainer/World3"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -216,7 +225,7 @@ theme_override_fonts/font = ExtResource("2_h05dh")
 theme_override_font_sizes/font_size = 24
 text = "World 3"
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer2/World3"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer2/HBoxContainer/World3"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -232,6 +241,11 @@ grow_vertical = 2
 texture = ExtResource("3_tlb1w")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="Panel" type="Panel" parent="MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_llkcd")
 
 [connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/Options" to="." method="_on_options_pressed"]
