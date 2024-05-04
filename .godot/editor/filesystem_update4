@@ -1,3 +1,5 @@
 res://scenes/slime.tscn
 res://scenes/prudence.tscn
 res://scenes/player.tscn
+res://scripts/killzone.gd
+res://scenes/killzone.tscn

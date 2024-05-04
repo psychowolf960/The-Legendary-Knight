@@ -432,8 +432,6 @@ sources/0 = SubResource("TileSetAtlasSource_ashvg")
 sources/1 = SubResource("TileSetScenesCollectionSource_np643")
 sources/3 = SubResource("TileSetAtlasSource_mk4vl")
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_cn5tm"]
-
 [sub_resource type="Animation" id="Animation_apgth"]
 length = 0.001
 tracks/0/type = "value"
@@ -498,6 +496,8 @@ height = 500
 fill = 1
 fill_from = Vector2(0.5, 0)
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_cn5tm"]
+
 [sub_resource type="Gradient" id="Gradient_stshc"]
 colors = PackedColorArray(0.87451, 0.823529, 0, 1, 0, 0, 0, 1)
 
@@ -556,12 +556,6 @@ one_shot = true
 wait_time = 0.2
 one_shot = true
 
-[node name="Killzone" parent="." instance=ExtResource("7_qcbie")]
-position = Vector2(74, 141)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-shape = SubResource("WorldBoundaryShape2D_cn5tm")
-
 [node name="Coins" type="Node" parent="."]
 
 [node name="Coin" parent="Coins" instance=ExtResource("4_8djqm")]
@@ -614,6 +608,12 @@ shadow_color = Color(0, 0, 0, 1)
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(1589, -149)
 texture = SubResource("GradientTexture2D_57sv2")
+
+[node name="Killzone" parent="PointLight2D" instance=ExtResource("7_qcbie")]
+position = Vector2(-1515, 290)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PointLight2D/Killzone"]
+shape = SubResource("WorldBoundaryShape2D_cn5tm")
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(-233, -9)
