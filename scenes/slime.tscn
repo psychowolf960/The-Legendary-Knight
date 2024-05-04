@@ -1,23 +1,25 @@
 [gd_scene load_steps=10 format=3 uid="uid://duj85jkd1ay6m"]
 
-[ext_resource type="Texture2D" uid="uid://bl53gpvg5mh1y" path="res://assets/sprites/slime_green.png" id="1_etmcw"]
 [ext_resource type="Script" path="res://scripts/slime.gd" id="1_p5xln"]
-[ext_resource type="PackedScene" path="res://scenes/killzone.tscn" id="2_rjokx"]
+[ext_resource type="PackedScene" uid="uid://bo6kp1akmk3ey" path="res://scenes/killzone.tscn" id="2_rjokx"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_euhup"]
+load_path = "res://.godot/imported/slime_green.png-f6349164bf3a0f5189bb927b97af9c58.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nku4j"]
-atlas = ExtResource("1_etmcw")
+atlas = SubResource("CompressedTexture2D_euhup")
 region = Rect2(0, 24, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r4xr3"]
-atlas = ExtResource("1_etmcw")
+atlas = SubResource("CompressedTexture2D_euhup")
 region = Rect2(24, 24, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_im6ss"]
-atlas = ExtResource("1_etmcw")
+atlas = SubResource("CompressedTexture2D_euhup")
 region = Rect2(48, 24, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oeu2o"]
-atlas = ExtResource("1_etmcw")
+atlas = SubResource("CompressedTexture2D_euhup")
 region = Rect2(72, 24, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d4bhh"]
@@ -47,6 +49,7 @@ size = Vector2(11, 13)
 script = ExtResource("1_p5xln")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1.183, 1, 1)
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_d4bhh")
 autoplay = "default"

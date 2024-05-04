@@ -1,2 +1,3 @@
-res://scenes/mainmenu.tscn
-res://scripts/mainmenu.gd
+res://scenes/slime.tscn
+res://scenes/prudence.tscn
+res://scenes/player.tscn

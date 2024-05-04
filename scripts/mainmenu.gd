@@ -9,7 +9,7 @@ class World extends Control:
 		self.x = 0
 
 @onready var world_1 = $MarginContainer2/HBoxContainer/World1
-
+@onready var world_4 = $MarginContainer2/HBoxContainer/World4
 @onready var world_2 = $MarginContainer2/HBoxContainer/World2
 @onready var world_3 = $MarginContainer2/HBoxContainer/World3
 
@@ -26,7 +26,7 @@ var world_indices = {}
 var animation_in_progress = false
 
 func _ready():
-	worlds = [world_1, world_2, world_3]
+	worlds = [world_1, world_2, world_3, world_4]
 	for i in range(worlds.size()):
 		world_indices[worlds[i]] = i + 1
 
@@ -47,12 +47,12 @@ func _start_animation_right():
 		print(hbox.get_child(i).name)
 	
 	for world in worlds:
-		print("Mfckin World ", world.name, " is at index ", world_indices[world])
+		print("World ", world.name, " is at index ", world_indices[world])
 	
 	animation_in_progress = false
 
 func _on_play_pressed():
-	get_tree().change_scene_to_file("res://scenes/game.tscn")
+		get_tree().change_scene_to_file("res://scenes/prudence.tscn")
 
 func _on_options_pressed():
 	get_tree().change_scene_to_file("res://scenes/optionsmenu.tscn")
@@ -66,6 +66,5 @@ func _input(event: InputEvent):
 			print("ok")
 			animate_sliding("right")
 		elif Input.is_action_just_pressed("ui_left") and not animation_in_progress:
-			print(world_indices)
 			print("work")
 			print(worlds)
