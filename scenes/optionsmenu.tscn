@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://db2bhi47kg35o"]
 
-[ext_resource type="Script" path="res://scenes/optionsmenu.gd" id="1_acygi"]
+[ext_resource type="Script" path="res://scripts/optionsmenu.gd" id="1_acygi"]
 [ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="2_ji6q1"]
 
 [sub_resource type="Theme" id="Theme_fc0j3"]
