@@ -17,7 +17,7 @@ There, The Valiant Knight Shall Find His Eternal Rest.*
 
 ------------
 
-## Features
+## Added Features
 
 - Better Controller (Coyote and Buffer)
 - Better Camera (PhantomCamera2D and Shake)
@@ -26,7 +26,6 @@ There, The Valiant Knight Shall Find His Eternal Rest.*
 
 
 ## Credits:
-The one and only: https://www.youtube.com/@Brackeys
 - CODE: **[analogStudios_]([https://analogstudios.itch.io/](https://github.com/psychowolf960) "psychowolf (me 😁!")**
 
 - VISUALS: **[analogStudios_](https://analogstudios.itch.io/ "analogStudios_")  [RottingPixels](https://rottingpixels.itch.io/ "RottingPixels")**
