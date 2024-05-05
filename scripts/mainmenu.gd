@@ -16,6 +16,7 @@ class World extends Control:
 var middle_index: int
 var animation_duration: float
 var animation_step: float
+var selected_level = "idk"
 
 func animate_sliding(direction: String):
 	if direction == "right":
@@ -27,32 +28,32 @@ var animation_in_progress = false
 
 func _ready():
 	worlds = [world_1, world_2, world_3, world_4]
-	for i in range(worlds.size()):
-		world_indices[worlds[i]] = i + 1
 
 func _start_animation_right():
 	animation_in_progress = true
 	var hbox = $MarginContainer2/HBoxContainer
-	for world in worlds:
-		if world_indices[world] == 4:
-			world_indices[world] = 1
-		else:
-			world_indices[world] += 1
-	for i in range(worlds.size()):
-		hbox.move_child(worlds[i], world_indices[worlds[i]] - 1)
+	var last_child = worlds[worlds.size()-1]
+	hbox.move_child(last_child, 0) # Moves last child to index zero, which reorders all children
 	
-	# Print tests to check if the nodes have correctly moved inside the HBoxContainer
-	print("After animation, the order of worlds in this damn HBoxContainer is:")
-	for i in range(hbox.get_child_count()):
-		print(hbox.get_child(i).name)
-	
-	for world in worlds:
-		print("World ", world.name, " is at index ", world_indices[world])
-	
+	selected_level = last_child.name
+	print("selected level: ", last_child.name)
+
+	var last_world = worlds.pop_back()
+	worlds.insert(0, last_world)
+
 	animation_in_progress = false
 
 func _on_play_pressed():
+	if selected_level == "idk":
+		get_tree().change_scene_to_file("res://scenes/game.tscn")
+	elif selected_level == "World1":
 		get_tree().change_scene_to_file("res://scenes/prudence.tscn")
+	elif selected_level == "World2":
+		print("world2")
+	elif selected_level == "World3":
+		print("world3")
+	elif selected_level == "World4":
+		print("world4")
 
 func _on_options_pressed():
 	get_tree().change_scene_to_file("res://scenes/optionsmenu.tscn")

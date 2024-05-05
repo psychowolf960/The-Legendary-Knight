@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cuv4vme4rwno0"]
+[gd_scene load_steps=24 format=3 uid="uid://cuv4vme4rwno0"]
 
 [ext_resource type="PackedScene" uid="uid://dqnaqj8yb6hwd" path="res://scenes/player.tscn" id="1_rbmkf"]
 [ext_resource type="Script" path="res://scripts/gamemanager.gd" id="1_uilpq"]
@@ -6,10 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://d0q2g65ahgok" path="res://assets/sprites/world_tileset.png" id="2_r1crl"]
 [ext_resource type="PackedScene" uid="uid://bgv5v2fxqlswe" path="res://scenes/platform.tscn" id="3_cmfc3"]
 [ext_resource type="PackedScene" uid="uid://pqp5qaw561fr" path="res://scenes/coin.tscn" id="4_28cek"]
-[ext_resource type="Texture2D" uid="uid://bkfshwhwsgkwq" path="res://assets/sprites/tileset_mk_16_16_nature_tileset_godot.png" id="5_koq6s"]
-[ext_resource type="PackedScene" path="res://scenes/killzone.tscn" id="5_x8euu"]
+[ext_resource type="PackedScene" uid="uid://bo6kp1akmk3ey" path="res://scenes/killzone.tscn" id="5_x8euu"]
 [ext_resource type="PackedScene" uid="uid://duj85jkd1ay6m" path="res://scenes/slime.tscn" id="6_8aowp"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="6_arnvl"]
+[ext_resource type="Script" path="res://scripts/Camera2D.gd" id="6_rlsg0"]
 [ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="7_8cblx"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="11_4efir"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="12_jrxog"]
+[ext_resource type="Script" path="res://scripts/signalbus.gd" id="14_7p3ir"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ashvg"]
 texture = ExtResource("2_r1crl")
@@ -416,7 +420,6 @@ resource_name = "coins"
 scenes/1/scene = ExtResource("4_28cek")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mk4vl"]
-texture = ExtResource("5_koq6s")
 
 [sub_resource type="TileSet" id="TileSet_wvtw0"]
 physics_layer_0/collision_layer = 1
@@ -464,6 +467,12 @@ _data = {
 "move": SubResource("Animation_bm7kf")
 }
 
+[sub_resource type="Resource" id="Resource_7cvvh"]
+script = ExtResource("12_jrxog")
+duration = 1.0
+transition = 0
+ease = 2
+
 [node name="Game" type="Node2D"]
 
 [node name="GameManager" type="Node" parent="."]
@@ -495,11 +504,17 @@ layer_1/tile_data = PackedInt32Array(196609, 0, 0, 196610, 0, 0, 393215, 0, 0, 3
 position = Vector2(34, 37)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(0, -7)
-zoom = Vector2(4, 4)
-limit_bottom = 120
+zoom = Vector2(10, 10)
+limit_left = -208
+limit_top = -304
+limit_right = 1024
+limit_bottom = 288
 limit_smoothed = true
-position_smoothing_enabled = true
+editor_draw_limits = true
+script = ExtResource("6_rlsg0")
+
+[node name="PhantomCameraHost" type="Node" parent="Player/Camera2D"]
+script = ExtResource("6_arnvl")
 
 [node name="Coyote" type="Timer" parent="Player"]
 wait_time = 0.2
@@ -514,6 +529,7 @@ position = Vector2(74, 141)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 shape = SubResource("WorldBoundaryShape2D_cn5tm")
+disabled = true
 
 [node name="Coins" type="Node" parent="."]
 
@@ -561,6 +577,9 @@ autoplay = "move"
 [node name="Slime" parent="." instance=ExtResource("6_8aowp")]
 position = Vector2(528, 80)
 
+[node name="Slime2" parent="." instance=ExtResource("6_8aowp")]
+position = Vector2(66, 71)
+
 [node name="Labels" type="Node" parent="."]
 
 [node name="Label" type="Label" parent="Labels"]
@@ -592,3 +611,25 @@ theme_override_colors/font_color = Color(0.0980392, 0.313726, 0.752941, 1)
 theme_override_fonts/font = ExtResource("2_nlliu")
 theme_override_font_sizes/font_size = 8
 text = "Bravissimo!🏆"
+
+[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
+position = Vector2(34, 37)
+script = ExtResource("11_4efir")
+follow_mode = 5
+follow_target = NodePath("../Player")
+zoom = Vector2(10, 10)
+tween_resource = SubResource("Resource_7cvvh")
+follow_damping = true
+draw_limits = true
+limit_left = -100
+limit_top = -280
+limit_right = 1000
+limit_bottom = 280
+limit_target = NodePath("../TileMap")
+
+[node name="SignalBus" type="Node" parent="."]
+script = ExtResource("14_7p3ir")
+
+[connection signal="mouse_entered" from="Player" to="Player/Camera2D" method="_on_player_mouse_entered"]
+[connection signal="hit" from="Killzone" to="Player/Camera2D" method="_on_killzone_hit"]
+[connection signal="ready" from="Killzone" to="Player/Camera2D" method="_on_killzone_ready"]

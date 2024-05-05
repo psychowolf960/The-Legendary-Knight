@@ -1,7 +1,7 @@
 extends Node2D
 const SPEED = 60
 var direction = 1
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 
 @onready var ray_cast_left = $RayCastLeft
 @onready var ray_cast_right = $RayCastRight

@@ -1,5 +1,11 @@
 res://scenes/slime.tscn
-res://scenes/prudence.tscn
+res://scripts/Camera2D.gd
 res://scenes/player.tscn
+res://scenes/mainmenu.tscn
+res://scripts/mainmenu.gd
+res://scenes/optionsmenu.tscn
 res://scripts/killzone.gd
-res://scenes/killzone.tscn
+res://scenes/game.tscn
+res://scripts/signalbus.gd
+res://node_2d.tscn
+res://scenes/SmoothPixel.gdshader

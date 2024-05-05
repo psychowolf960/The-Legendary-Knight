@@ -17,12 +17,20 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Signalbus="*res://scripts/signalbus.gd"
 Music="*res://scenes/music.tscn"
-Gamemanager="*res://scripts/gamemanager.gd"
 
 [display]
 
-window/vsync/vsync_mode=0
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/window_height_override=1080
+window/stretch/mode="canvas_items"
+window/size/window_width_override=1920
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
 
 [input]
 

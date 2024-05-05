@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://h0abe0kq61pb"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Button" type="Button" parent="."]
+offset_left = 163.0
+offset_top = 125.0
+offset_right = 486.0
+offset_bottom = 280.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(-3, -3)

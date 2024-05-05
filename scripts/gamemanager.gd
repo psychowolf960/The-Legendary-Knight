@@ -7,3 +7,7 @@ var score = 0
 func add_point():
 	score += 1
 	score_label.text = "You collected " + str(score) + " coins."
+
+
+func _on_player_mouse_entered():
+	pass # Replace with function body.
