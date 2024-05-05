@@ -25,11 +25,18 @@ There, The Valiant Knight Shall Find His Eternal Rest.*
 - Main menu (level selection and options)
 
 
-
-## License
-
-[![MIT License](https://img.shields.io/badge/License-The Unlicense-red.svg)](http://unlicense.org/)
-
-
 ## Credits:
 The one and only: https://www.youtube.com/@Brackeys
+- CODE: **[analogStudios_]([https://analogstudios.itch.io/](https://github.com/psychowolf960) "psychowolf (me 😁!")**
+
+- VISUALS: **[analogStudios_](https://analogstudios.itch.io/ "analogStudios_")  [RottingPixels](https://rottingpixels.itch.io/ "RottingPixels")**
+
+- MUSIC : **[Brackeys](https://www.youtube.com/@Brackeys "Brackeys"), Sofia Thirslund**
+
+- SOUNDS: **by [Brackeys](https://www.youtube.com/@Brackeys "Brackeys"), Asbjørn Thirslund**
+
+- FONTS: **by Jayvee Enaguas - [HarvettFox96](https://www.dafont.com/pixel-operator.font?l[]=10&l[]=1 "HarvettFox96").**
+
+- INSPIRATION AND BASE TUTORIAL: **[Brackeys (again!)](https://www.youtube.com/watch?v=LOhfqjmasi0)**
+
+![Static Badge](https://img.shields.io/badge/The-Unlicense-red)
