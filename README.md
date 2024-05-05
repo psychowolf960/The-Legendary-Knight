@@ -17,11 +17,12 @@ There, The Valiant Knight Shall Find His Eternal Rest.*
 
 ------------
 
-## Added Features
+## Features
 
 - Better Controller (Coyote and Buffer)
 - Better Camera (PhantomCamera2D and Shake)
-- Unkillable Knight
+- Immortal Knight
+- Better lightning (world environment and lightning)
 - Main menu (level selection and options)
 
 
