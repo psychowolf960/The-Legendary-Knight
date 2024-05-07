@@ -806,5 +806,4 @@ script = ExtResource("14_7p3ir")
 
 [connection signal="mouse_entered" from="Player" to="Player/Camera2D" method="_on_player_mouse_entered"]
 [connection signal="body_entered" from="Killzone" to="Player/Camera2D" method="_on_killzone_body_entered"]
-[connection signal="hit" from="Killzone" to="Player/Camera2D" method="_on_killzone_hit"]
 [connection signal="ready" from="Killzone" to="Player/Camera2D" method="_on_killzone_ready"]

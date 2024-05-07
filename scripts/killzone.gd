@@ -2,7 +2,6 @@ extends Area2D
 
 @onready var timer = $Timer
 @onready var destructible = $".."
-signal hit
 
 func _throw_parent_out_of_screen(body: Node2D):
 	# Create a tween to throw the parent node out of the screen
@@ -20,3 +19,4 @@ func _process(delta):
 
 func _on_body_entered(body):
 	_throw_parent_out_of_screen(body)
+	print("yes")
