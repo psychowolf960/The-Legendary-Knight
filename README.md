@@ -27,7 +27,7 @@ There, The Valiant Knight Shall Find His Eternal Rest.*
 
 
 ## Credits:
-- CODE: **[analogStudios_]([https://analogstudios.itch.io/](https://github.com/psychowolf960) "psychowolf (me 😁!")**
+- CODE: **["psychowolf (me 😁!")]([https://analogstudios.itch.io/](https://github.com/psychowolf960)**
 
 - VISUALS: **[analogStudios_](https://analogstudios.itch.io/ "analogStudios_")  [RottingPixels](https://rottingpixels.itch.io/ "RottingPixels")**
 
