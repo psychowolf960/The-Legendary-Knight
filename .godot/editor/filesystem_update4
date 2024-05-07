@@ -1,5 +1,7 @@
-res://scenes/game.tscn
+res://scenes/mainmenu.tscn
 res://scripts/Camera2D.gd
 res://scenes/SmoothPixel.gdshader
+res://scenes/game.tscn
 res://scenes/player.tscn
 res://scenes/slime.tscn
+res://scenes/optionsmenu.tscn
