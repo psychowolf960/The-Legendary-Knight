@@ -20,4 +20,3 @@ func _process(delta):
 
 func _on_body_entered(body):
 	_throw_parent_out_of_screen(body)
-	hit.emit()

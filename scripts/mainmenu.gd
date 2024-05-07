@@ -33,7 +33,10 @@ func _start_animation_right():
 	animation_in_progress = true
 	var hbox = $MarginContainer2/HBoxContainer
 	var last_child = worlds[worlds.size()-1]
-	hbox.move_child(last_child, 0) # Moves last child to index zero, which reorders all children
+	for world in worlds:
+		world.visible = true
+	hbox.move_child(last_child, 0)
+	last_child.visible = false
 	
 	selected_level = last_child.name
 	print("selected level: ", last_child.name)
@@ -46,13 +49,13 @@ func _start_animation_right():
 func _on_play_pressed():
 	if selected_level == "idk":
 		get_tree().change_scene_to_file("res://scenes/game.tscn")
-	elif selected_level == "World1":
-		get_tree().change_scene_to_file("res://scenes/prudence.tscn")
-	elif selected_level == "World2":
-		print("world2")
 	elif selected_level == "World3":
-		print("world3")
+		get_tree().change_scene_to_file("res://scenes/prudence.tscn")
 	elif selected_level == "World4":
+		print("world2")
+	elif selected_level == "World1":
+		print("world3")
+	elif selected_level == "World2":
 		print("world4")
 
 func _on_options_pressed():

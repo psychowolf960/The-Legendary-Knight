@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cedft3vy5hg68"]
+[gd_scene load_steps=8 format=3 uid="uid://dfyjja5jtyhwx"]
 
-[ext_resource type="Script" path="res://scripts/mainmenu.gd" id="1_qj2ne"]
-[ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="2_h05dh"]
-[ext_resource type="Texture2D" uid="uid://cyfxuch6qa87f" path="res://icon.svg" id="3_tlb1w"]
+[ext_resource type="Script" path="res://scripts/mainmenu.gd" id="1_s0bw2"]
+[ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="2_k51t6"]
+[ext_resource type="Texture2D" uid="uid://cyfxuch6qa87f" path="res://icon.svg" id="3_dfwo2"]
 
 [sub_resource type="Theme" id="Theme_45hd1"]
 
@@ -22,16 +22,16 @@ shadow_color = Color(1, 1, 1, 0.6)
 shadow_size = 2
 anti_aliasing = false
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_llkcd"]
+bg_color = Color(0.121569, 0.121569, 0.121569, 0.305882)
+expand_margin_top = 10.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8c08p"]
 bg_color = Color(0.152941, 0.152941, 0.152941, 1)
 expand_margin_left = 5.0
 expand_margin_top = 5.0
 expand_margin_right = 5.0
 expand_margin_bottom = 5.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_llkcd"]
-bg_color = Color(0.121569, 0.121569, 0.121569, 0.305882)
-expand_margin_top = 10.0
 
 [node name="mainmenu" type="Control"]
 layout_mode = 3
@@ -42,7 +42,7 @@ offset_left = 1.0
 offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_qj2ne")
+script = ExtResource("1_s0bw2")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(200, 200)
@@ -76,17 +76,17 @@ grow_vertical = 2
 
 [node name="Play" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_h05dh")
+theme_override_fonts/font = ExtResource("2_k51t6")
 text = "Play"
 
 [node name="Options" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_h05dh")
+theme_override_fonts/font = ExtResource("2_k51t6")
 text = "Options"
 
 [node name="Exit" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_h05dh")
+theme_override_fonts/font = ExtResource("2_k51t6")
 text = "Exit"
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
@@ -104,12 +104,24 @@ grow_horizontal = 2
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="World1" type="Control" parent="MarginContainer2/HBoxContainer"]
+[node name="Panel" type="Panel" parent="MarginContainer2"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_llkcd")
+
+[node name="HScrollBar" type="HScrollBar" parent="MarginContainer2"]
+layout_mode = 2
+
+[node name="World1" type="Control" parent="MarginContainer2/HScrollBar"]
 y_sort_enabled = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+anchors_preset = 0
+offset_left = 265.0
+offset_right = 415.0
+offset_bottom = 268.0
 
-[node name="Label2" type="Label" parent="MarginContainer2/HBoxContainer/World1"]
+[node name="Label2" type="Label" parent="MarginContainer2/HScrollBar/World1"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -122,12 +134,12 @@ offset_right = 69.0
 offset_bottom = -62.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_h05dh")
+theme_override_fonts/font = ExtResource("2_k51t6")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_8c08p")
 text = "World 1"
 
-[node name="Label1" type="TextureRect" parent="MarginContainer2/HBoxContainer/World1"]
+[node name="Label1" type="TextureRect" parent="MarginContainer2/HScrollBar/World1"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -140,15 +152,19 @@ offset_right = 32.0
 offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_tlb1w")
+texture = ExtResource("3_dfwo2")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="World2" type="Control" parent="MarginContainer2/HBoxContainer"]
+[node name="World2" type="Control" parent="MarginContainer2/HScrollBar"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+anchors_preset = 0
+offset_left = 419.0
+offset_right = 569.0
+offset_bottom = 268.0
 
-[node name="Label" type="Label" parent="MarginContainer2/HBoxContainer/World2"]
+[node name="Label" type="Label" parent="MarginContainer2/HScrollBar/World2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -161,11 +177,11 @@ offset_right = 69.0
 offset_bottom = -62.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_h05dh")
+theme_override_fonts/font = ExtResource("2_k51t6")
 theme_override_font_sizes/font_size = 24
 text = "World 2"
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer2/HBoxContainer/World2"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer2/HScrollBar/World2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -178,15 +194,19 @@ offset_right = 32.0
 offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_tlb1w")
+texture = ExtResource("3_dfwo2")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="World3" type="Control" parent="MarginContainer2/HBoxContainer"]
+[node name="World3" type="Control" parent="MarginContainer2/HScrollBar"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+anchors_preset = 0
+offset_left = 573.0
+offset_right = 723.0
+offset_bottom = 268.0
 
-[node name="Label" type="Label" parent="MarginContainer2/HBoxContainer/World3"]
+[node name="Label" type="Label" parent="MarginContainer2/HScrollBar/World3"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -199,11 +219,11 @@ offset_right = 69.0
 offset_bottom = -62.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_h05dh")
+theme_override_fonts/font = ExtResource("2_k51t6")
 theme_override_font_sizes/font_size = 24
 text = "World 3"
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer2/HBoxContainer/World3"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer2/HScrollBar/World3"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -216,16 +236,20 @@ offset_right = 32.0
 offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_tlb1w")
+texture = ExtResource("3_dfwo2")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="World4" type="Control" parent="MarginContainer2/HBoxContainer"]
+[node name="World4" type="Control" parent="MarginContainer2/HScrollBar"]
 visible = false
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+anchors_preset = 0
+offset_left = 265.0
+offset_right = 415.0
+offset_bottom = 173.0
 
-[node name="Level4" type="Label" parent="MarginContainer2/HBoxContainer/World4"]
+[node name="Level4" type="Label" parent="MarginContainer2/HScrollBar/World4"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -238,11 +262,11 @@ offset_right = 69.0
 offset_bottom = -62.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_h05dh")
+theme_override_fonts/font = ExtResource("2_k51t6")
 theme_override_font_sizes/font_size = 24
 text = "World 4"
 
-[node name="Level5" type="TextureRect" parent="MarginContainer2/HBoxContainer/World4"]
+[node name="Level5" type="TextureRect" parent="MarginContainer2/HScrollBar/World4"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -255,14 +279,9 @@ offset_right = 32.0
 offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_tlb1w")
+texture = ExtResource("3_dfwo2")
 expand_mode = 1
 stretch_mode = 5
-
-[node name="Panel" type="Panel" parent="MarginContainer2"]
-custom_minimum_size = Vector2(0, 200)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_llkcd")
 
 [connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/Options" to="." method="_on_options_pressed"]

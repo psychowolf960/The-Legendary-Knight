@@ -29,6 +29,7 @@ func _shake():
 	offset.x =  amplitude * amount * noise.get_noise_2d(noise.seed,_noise_y)
 	offset.y =  amplitude * amount * noise.get_noise_2d(noise.seed*2,_noise_y)
 
-func _on_killzone_hit():
-	add_trauma(0.6)
+
+func _on_killzone_body_entered(body):
 	print("fine")
+	add_trauma(0.6)

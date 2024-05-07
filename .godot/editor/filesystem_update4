@@ -1,7 +1,10 @@
-res://scenes/mainmenu.tscn
+res://scenes/game.tscn
 res://scripts/Camera2D.gd
 res://scenes/SmoothPixel.gdshader
-res://scenes/game.tscn
 res://scenes/player.tscn
 res://scenes/slime.tscn
 res://scenes/optionsmenu.tscn
+res://scenes/mainmenu.tscn
+res://scripts/mainmenu.gd
+res://scenes/mainmenu2.tscn
+res://scripts/killzone.gd
