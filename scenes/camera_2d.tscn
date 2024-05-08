@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1kx38kn16kg8"]
+
+[ext_resource type="Script" path="res://scripts/Camera2D.gd" id="1_u7eu1"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_rrre3"]
+
+[node name="Camera2D" type="Camera2D"]
+zoom = Vector2(4, 4)
+limit_left = -208
+limit_top = -304
+limit_right = 1024
+limit_bottom = 288
+limit_smoothed = true
+editor_draw_limits = true
+script = ExtResource("1_u7eu1")
+
+[node name="PhantomCameraHost" type="Node" parent="."]
+script = ExtResource("2_rrre3")

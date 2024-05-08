@@ -10,7 +10,8 @@ var trauma_power = 2
 var NOISE_SPEED = 5
 var _noise_y = 0
 
-func _ready():
+func _ready()-> void:
+	signalbus.connect("_hit", hit) 
 	randomize()
 	noise.seed = randi()
 	noise.noise_type = FastNoiseLite.TYPE_PERLIN
@@ -29,7 +30,6 @@ func _shake():
 	offset.x =  amplitude * amount * noise.get_noise_2d(noise.seed,_noise_y)
 	offset.y =  amplitude * amount * noise.get_noise_2d(noise.seed*2,_noise_y)
 
-
-func _on_killzone_body_entered(body):
+func hit(hit):
 	print("fine")
-	add_trauma(0.6)
+	add_trauma(5)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://kdhqkpm7arfh"]
+[gd_scene load_steps=25 format=3 uid="uid://kdhqkpm7arfh"]
 
 [ext_resource type="Script" path="res://scripts/gamemanager.gd" id="1_q0jqa"]
 [ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="2_nd50m"]
 [ext_resource type="PackedScene" uid="uid://pqp5qaw561fr" path="res://scenes/coin.tscn" id="4_8djqm"]
+[ext_resource type="PackedScene" uid="uid://c1kx38kn16kg8" path="res://scenes/camera_2d.tscn" id="5_1dmdl"]
 [ext_resource type="PackedScene" uid="uid://dqnaqj8yb6hwd" path="res://scenes/player.tscn" id="6_5vdrb"]
 [ext_resource type="PackedScene" uid="uid://bo6kp1akmk3ey" path="res://scenes/killzone.tscn" id="7_qcbie"]
 [ext_resource type="PackedScene" uid="uid://bgv5v2fxqlswe" path="res://scenes/platform.tscn" id="8_3rcl6"]
@@ -541,12 +542,7 @@ layer_1/tile_data = PackedInt32Array(-1507321, 0, 9, -1441785, 0, 9, -1376249, 0
 [node name="Player" parent="." instance=ExtResource("6_5vdrb")]
 position = Vector2(34, 37)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(0, -7)
-zoom = Vector2(4, 4)
-limit_bottom = 120
-limit_smoothed = true
-position_smoothing_enabled = true
+[node name="Camera2D" parent="Player" instance=ExtResource("5_1dmdl")]
 
 [node name="Coyote" type="Timer" parent="Player"]
 wait_time = 0.2
