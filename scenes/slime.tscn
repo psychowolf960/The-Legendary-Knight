@@ -62,6 +62,7 @@ autoplay = "default"
 frame_progress = 0.382989
 
 [node name="Killzone" parent="." instance=ExtResource("2_rjokx")]
+collision_mask = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 position = Vector2(0, -7)
@@ -74,3 +75,4 @@ target_position = Vector2(-9, 0)
 [node name="RayCastRight" type="RayCast2D" parent="."]
 position = Vector2(0, -6)
 target_position = Vector2(9, 0)
+collision_mask = 2

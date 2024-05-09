@@ -1,5 +1,7 @@
 extends Control
 
+@export var stream : AudioStream
+var dB = 30
 class World extends Control:
 	var label: String
 	var x: int
@@ -38,8 +40,7 @@ func _start_animation_right():
 	hbox.move_child(last_child, 0)
 	last_child.visible = false
 	
-	selected_level = last_child.name
-	print("selected level: ", last_child.name)
+	selected_level = worlds[1]
 
 	var last_world = worlds.pop_back()
 	worlds.insert(0, last_world)
@@ -47,19 +48,21 @@ func _start_animation_right():
 	animation_in_progress = false
 
 func _on_play_pressed():
-	if selected_level == "idk":
+	if selected_level == world_4:
 		get_tree().change_scene_to_file("res://scenes/game.tscn")
-	elif selected_level == "World3":
+	elif selected_level == world_1:
 		get_tree().change_scene_to_file("res://scenes/prudence.tscn")
-	elif selected_level == "World4":
+	elif selected_level == world_2:
 		print("world2")
-	elif selected_level == "World1":
+	elif selected_level == world_3:
 		print("world3")
-	elif selected_level == "World2":
+	elif selected_level == world_4:
 		print("world4")
+	Audiomanager.play_sound(stream, dB)
 
 func _on_options_pressed():
 	get_tree().change_scene_to_file("res://scenes/optionsmenu.tscn")
+
 
 func _on_exit_pressed():
 	get_tree().quit()

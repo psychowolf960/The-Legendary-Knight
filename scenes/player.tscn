@@ -1,7 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://dqnaqj8yb6hwd"]
+[gd_scene load_steps=31 format=3 uid="uid://dqnaqj8yb6hwd"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ofpvf"]
+[ext_resource type="AudioStream" uid="uid://b55xtmvwkoslc" path="res://assets/sounds/jump.wav" id="2_3x5cj"]
 [ext_resource type="Shader" path="res://scenes/SmoothPixel.gdshader" id="2_5x67l"]
+[ext_resource type="AudioStream" uid="uid://duhe7my8ilfph" path="res://assets/sounds/tap.wav" id="3_xf1x0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ducun"]
 shader = ExtResource("2_5x67l")
@@ -184,8 +186,10 @@ polygon = PackedVector2Array(5, 0, -6, 0, -6, -6, -5, -6, -5, -12, -7, -12, -7, 
 z_index = 5
 collision_layer = 2
 script = ExtResource("1_ofpvf")
+sfx_jump = ExtResource("2_3x5cj")
+sfx_walk = ExtResource("3_xf1x0")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 2
 material = SubResource("ShaderMaterial_ducun")
 position = Vector2(0, -12)
@@ -193,25 +197,15 @@ sprite_frames = SubResource("SpriteFrames_81gkq")
 animation = &"jump"
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_bvcm0")
 
-[node name="midR" type="RayCast2D" parent="."]
-position = Vector2(2, -9)
-target_position = Vector2(0, -10)
-
-[node name="Right" type="RayCast2D" parent="."]
-position = Vector2(4, -9)
-target_position = Vector2(0, -10)
-
-[node name="midL" type="RayCast2D" parent="."]
-position = Vector2(-2, -9)
-target_position = Vector2(0, -10)
-
-[node name="Left" type="RayCast2D" parent="."]
-position = Vector2(-4, -9)
-target_position = Vector2(0, -10)
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+[node name="LightOccluder" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_dnguf")
+
+[node name="sfx_player" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+bus = &"SFX"
+
+[connection signal="frame_changed" from="Sprite" to="." method="_on_animated_sprite_2d_frame_changed"]
