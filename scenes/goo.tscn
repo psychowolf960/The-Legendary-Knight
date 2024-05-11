@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://c2nwck2dncj7"]
+
+[ext_resource type="Script" path="res://scripts/slime.gd" id="1_rijco"]
+[ext_resource type="Shader" path="res://shader/SmoothPixel.gdshader" id="2_2bcod"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ncjqh"]
+shader = ExtResource("2_2bcod")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_euhup"]
+load_path = "res://.godot/imported/slime_green.png-f6349164bf3a0f5189bb927b97af9c58.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nku4j"]
+atlas = SubResource("CompressedTexture2D_euhup")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4xr3"]
+atlas = SubResource("CompressedTexture2D_euhup")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_im6ss"]
+atlas = SubResource("CompressedTexture2D_euhup")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oeu2o"]
+atlas = SubResource("CompressedTexture2D_euhup")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d4bhh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nku4j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4xr3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_im6ss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oeu2o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Slime" type="Node2D"]
+texture_filter = 2
+script = ExtResource("1_rijco")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1.183, 1, 1)
+material = SubResource("ShaderMaterial_ncjqh")
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_d4bhh")
+autoplay = "default"
+frame_progress = 0.382989
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, -6)
+target_position = Vector2(-9, 0)
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(0, -6)
+target_position = Vector2(9, 0)
+collision_mask = 2

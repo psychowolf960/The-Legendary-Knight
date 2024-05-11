@@ -2,24 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/optionsmenu.gd" id="1_acygi"]
 [ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="2_ji6q1"]
-
-[sub_resource type="Theme" id="Theme_fc0j3"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_44a25"]
-bg_color = Color(0.4, 0.627451, 0.796078, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-border_blend = true
-expand_margin_left = 10.0
-expand_margin_top = 10.0
-expand_margin_right = 10.0
-expand_margin_bottom = 10.0
-shadow_color = Color(1, 1, 1, 0.6)
-shadow_size = 2
-anti_aliasing = false
+[ext_resource type="Theme" uid="uid://g5jumnfbow4v" path="res://assets/sprites/UI/Default.tres" id="2_p3ou5"]
+[ext_resource type="Script" path="res://scripts/OptionsScreen.gd" id="2_tne8a"]
 
 [node name="Options" type="Control"]
 layout_mode = 3
@@ -32,48 +16,56 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_acygi")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="OptionsScreen" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -107.0
-offset_top = -51.0
-offset_right = 107.0
-offset_bottom = 52.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_tne8a")
 
-[node name="Panel" type="Panel" parent="MarginContainer"]
+[node name="Panel" type="Panel" parent="OptionsScreen"]
+texture_filter = 1
 layout_mode = 2
-theme = SubResource("Theme_fc0j3")
-theme_override_styles/panel = SubResource("StyleBoxFlat_44a25")
+theme = ExtResource("2_p3ou5")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -46.0
-offset_top = -40.0
-offset_right = 46.0
-offset_bottom = 40.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Volume" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsScreen"]
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 20
+
+[node name="Volume" type="Button" parent="OptionsScreen/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_p3ou5")
 theme_override_fonts/font = ExtResource("2_ji6q1")
+theme_override_font_sizes/font_size = 72
 text = "Volume"
 
-[node name="Back" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
+[node name="Back" type="Button" parent="OptionsScreen/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_p3ou5")
 theme_override_fonts/font = ExtResource("2_ji6q1")
+theme_override_font_sizes/font_size = 72
 text = "Back"
 
-[connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/Volume" to="." method="_on_volume_pressed"]
-[connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[node name="HBoxContainer" type="HBoxContainer" parent="OptionsScreen"]
+layout_mode = 2
+
+[node name="VolumePercentageLabel" type="Label" parent="OptionsScreen/HBoxContainer"]
+layout_mode = 2
+text = "Volume1"
+
+[node name="HSlider" type="HSlider" parent="OptionsScreen/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+value = 14.0
+
+[node name="BusName" type="Label" parent="OptionsScreen/HBoxContainer"]
+layout_mode = 2
+text = "SFX"
+
+[node name="SFXPreview" type="AudioStreamPlayer" parent="OptionsScreen"]
+
+[connection signal="pressed" from="OptionsScreen/VBoxContainer/Volume" to="." method="_on_volume_pressed"]
+[connection signal="pressed" from="OptionsScreen/VBoxContainer/Back" to="." method="_on_back_pressed"]

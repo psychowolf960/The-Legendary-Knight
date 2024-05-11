@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cuv4vme4rwno0"]
+[gd_scene load_steps=22 format=3 uid="uid://cuv4vme4rwno0"]
 
 [ext_resource type="PackedScene" uid="uid://dqnaqj8yb6hwd" path="res://scenes/player.tscn" id="1_rbmkf"]
 [ext_resource type="Script" path="res://scripts/gamemanager.gd" id="1_uilpq"]
@@ -6,13 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://bgv5v2fxqlswe" path="res://scenes/platform.tscn" id="3_cmfc3"]
 [ext_resource type="Texture2D" uid="uid://d0q2g65ahgok" path="res://assets/sprites/world_tileset.png" id="3_efh33"]
 [ext_resource type="PackedScene" uid="uid://pqp5qaw561fr" path="res://scenes/coin.tscn" id="4_28cek"]
-[ext_resource type="PackedScene" uid="uid://bo6kp1akmk3ey" path="res://scenes/killzone.tscn" id="5_x8euu"]
 [ext_resource type="PackedScene" uid="uid://duj85jkd1ay6m" path="res://scenes/slime.tscn" id="6_8aowp"]
 [ext_resource type="PackedScene" uid="uid://c1kx38kn16kg8" path="res://scenes/camera_2d.tscn" id="6_dc3lp"]
 [ext_resource type="AudioStream" uid="uid://bxmxr6kujrnrk" path="res://assets/sounds/jump2.wav" id="6_tdvbu"]
 [ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="7_8cblx"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="11_4efir"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="12_jrxog"]
+[ext_resource type="PackedScene" uid="uid://ckpi14xmoa18x" path="res://scenes/knockzone.tscn" id="13_aomcp"]
+[ext_resource type="Script" path="res://scenes/knockzone.gd" id="14_pbi6h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ij0ku"]
 texture = ExtResource("3_efh33")
@@ -571,8 +572,6 @@ terrain_set_0/terrain_1/name = "Grass"
 terrain_set_0/terrain_1/color = Color(0.352941, 0.584314, 0.211765, 1)
 sources/0 = SubResource("TileSetAtlasSource_ij0ku")
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_cn5tm"]
-
 [sub_resource type="Animation" id="Animation_apgth"]
 length = 0.001
 tracks/0/type = "value"
@@ -617,6 +616,9 @@ duration = 1.0
 transition = 0
 ease = 2
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jkwee"]
+size = Vector2(20, 54)
+
 [node name="Game" type="Node2D"]
 
 [node name="GameManager" type="Node" parent="."]
@@ -658,13 +660,6 @@ one_shot = true
 [node name="Buffer" type="Timer" parent="Player"]
 wait_time = 0.2
 one_shot = true
-
-[node name="Killzone" parent="." instance=ExtResource("5_x8euu")]
-position = Vector2(74, 141)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-shape = SubResource("WorldBoundaryShape2D_cn5tm")
-disabled = true
 
 [node name="Coins" type="Node" parent="."]
 
@@ -761,3 +756,14 @@ limit_top = -280
 limit_right = 1000
 limit_bottom = 280
 limit_target = NodePath("../TileMap")
+
+[node name="KnockZone" parent="." instance=ExtResource("13_aomcp")]
+collision_layer = 2
+script = ExtResource("14_pbi6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KnockZone"]
+position = Vector2(-2, 32)
+shape = SubResource("RectangleShape2D_jkwee")
+disabled = true
+
+[connection signal="body_entered" from="KnockZone" to="Player" method="_on_knock_zone_body_entered"]

@@ -3,6 +3,7 @@ extends TextureRect
 class_name AnimatedTextureRect
 
 signal is_playing
+@onready var mainmenu = get_tree().get_current_scene()
 
 @export var sprites: SpriteFrames:
 	set(value):
@@ -100,11 +101,11 @@ func _property_get_revert(property: StringName): # -> Variant() type
 	return null
 
 func _ready():
+	print(mainmenu)
 	if !Engine.is_editor_hint():
 		if sprites == null:
 			return
 		is_playing.connect(on_playing)
-
 #		fps = sprites.get_animation_speed(animation)
 #		refresh_rate = sprites.get_frame_duration(animation, frame)
 
@@ -120,7 +121,7 @@ func on_playing():
 		if !sprites.has_animation(animation):
 			playing = false
 			assert(false, "Animation %s not found" % animation)
-			break
+
 
 		fps = sprites.get_animation_speed(animation)
 		refresh_rate = sprites.get_frame_duration(animation, frame)
@@ -160,5 +161,4 @@ func pause():
 	paused = true
 
 func stop():
-	frame = 0
 	playing = false

@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 signalbus="*res://scripts/signalbus.gd"
 Gamemanager="*res://scripts/gamemanager.gd"
 Audiomanager="*res://scripts/audiomanager.gd"
+Options="*res://scripts/Options.gd"
 
 [display]
 
@@ -29,10 +30,15 @@ window/size/mode=3
 window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="canvas_items"
+mouse_cursor/custom_image="res://assets/sprites/UI/Cursor_01_3D.png"
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
+
+[ez_sound]
+
+ez_sound_path="res://assets/sounds/"
 
 [input]
 

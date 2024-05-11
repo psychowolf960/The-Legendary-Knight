@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://kdhqkpm7arfh"]
+[gd_scene load_steps=22 format=3 uid="uid://kdhqkpm7arfh"]
 
 [ext_resource type="Script" path="res://scripts/gamemanager.gd" id="1_q0jqa"]
 [ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="2_nd50m"]
@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dqnaqj8yb6hwd" path="res://scenes/player.tscn" id="6_5vdrb"]
 [ext_resource type="PackedScene" uid="uid://bo6kp1akmk3ey" path="res://scenes/killzone.tscn" id="7_qcbie"]
 [ext_resource type="PackedScene" uid="uid://bgv5v2fxqlswe" path="res://scenes/platform.tscn" id="8_3rcl6"]
-[ext_resource type="PackedScene" uid="uid://duj85jkd1ay6m" path="res://scenes/slime.tscn" id="9_7kfdg"]
+[ext_resource type="PackedScene" uid="uid://c2nwck2dncj7" path="res://scenes/goo.tscn" id="8_8u0ti"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rb6b2"]
 load_path = "res://.godot/imported/world_tileset.png-61a32465f33c3d9d3bfecb75b6485009.ctex"
@@ -573,7 +573,7 @@ load_path = "res://.godot/imported/tileset_mk_16_16_nature_tileset_godot.png-b0d
 texture = SubResource("CompressedTexture2D_3q15t")
 
 [sub_resource type="TileSet" id="TileSet_wvtw0"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 3
 sources/0 = SubResource("TileSetAtlasSource_ashvg")
 sources/1 = SubResource("TileSetScenesCollectionSource_np643")
 sources/3 = SubResource("TileSetAtlasSource_mk4vl")
@@ -631,19 +631,6 @@ glow_bloom = 0.13
 glow_blend_mode = 1
 fog_density = 0.209
 
-[sub_resource type="Gradient" id="Gradient_bkusv"]
-interpolation_mode = 2
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_57sv2"]
-gradient = SubResource("Gradient_bkusv")
-width = 4000
-height = 500
-fill = 1
-fill_from = Vector2(0.5, 0)
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_cn5tm"]
-
 [sub_resource type="Gradient" id="Gradient_stshc"]
 colors = PackedColorArray(0.87451, 0.823529, 0, 1, 0, 0, 0, 1)
 
@@ -655,6 +642,9 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [node name="Level1" type="Node2D"]
+
+[node name="Slime2" parent="." instance=ExtResource("8_8u0ti")]
+position = Vector2(683, 53)
 
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
@@ -717,15 +707,6 @@ libraries = {
 autoplay = "move"
 speed_scale = -0.75
 
-[node name="Slime" parent="." instance=ExtResource("9_7kfdg")]
-position = Vector2(898, 85)
-
-[node name="Slime2" parent="." instance=ExtResource("9_7kfdg")]
-position = Vector2(778, 85)
-
-[node name="Slime3" parent="." instance=ExtResource("9_7kfdg")]
-position = Vector2(836, 85)
-
 [node name="Labels" type="Node" parent="."]
 
 [node name="Label" type="Label" parent="Labels"]
@@ -745,16 +726,6 @@ environment = SubResource("Environment_8yafa")
 color = Color(0.764706, 0.764706, 0.764706, 1)
 blend_mode = 2
 shadow_color = Color(0, 0, 0, 1)
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(1589, -149)
-texture = SubResource("GradientTexture2D_57sv2")
-
-[node name="Killzone" parent="PointLight2D" instance=ExtResource("7_qcbie")]
-position = Vector2(-1515, 290)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PointLight2D/Killzone"]
-shape = SubResource("WorldBoundaryShape2D_cn5tm")
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(-233, -9)
@@ -797,3 +768,9 @@ texture = SubResource("GradientTexture2D_pct03")
 position = Vector2(358, 0)
 energy = 8.0
 texture = SubResource("GradientTexture2D_pct03")
+
+[node name="Slime" parent="." instance=ExtResource("8_8u0ti")]
+position = Vector2(784, 85)
+
+[node name="Killzone" parent="." instance=ExtResource("7_qcbie")]
+position = Vector2(55, 26)

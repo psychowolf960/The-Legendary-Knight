@@ -176,8 +176,9 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_bvcm0"]
-radius = 5.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cxqp6"]
+radius = 6.0
+height = 14.0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_dnguf"]
 polygon = PackedVector2Array(5, 0, -6, 0, -6, -6, -5, -6, -5, -12, -7, -12, -7, -15, 1, -15, 1, -14, 2, -14, 2, -12, 5, -12, 5, -10, 6, -10, 6, -3, 5, -3)
@@ -198,8 +199,8 @@ animation = &"jump"
 autoplay = "idle"
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -5)
-shape = SubResource("CircleShape2D_bvcm0")
+position = Vector2(0, -7)
+shape = SubResource("CapsuleShape2D_cxqp6")
 
 [node name="LightOccluder" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_dnguf")

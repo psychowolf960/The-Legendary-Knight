@@ -6,7 +6,7 @@ extends Camera2D
 @export var amplitude : float = 15.0
 
 var trauma = 0.0
-var trauma_power = 1.2 
+var trauma_power = 2
 var NOISE_SPEED = 5
 var _noise_y = 0
 
@@ -31,5 +31,4 @@ func _shake():
 	offset.y =  amplitude * amount * noise.get_noise_2d(noise.seed*2,_noise_y)
 
 func hit():
-	print("fine")
-	add_trauma(500)
+	add_trauma(20)

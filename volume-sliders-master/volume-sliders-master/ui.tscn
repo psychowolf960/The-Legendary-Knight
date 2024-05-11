@@ -1,0 +1,134 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbeiyg72b0rvd"]
+
+[ext_resource type="Script" path="res://ui.gd" id="1_og5ay"]
+[ext_resource type="Script" path="res://OptionsScreen.gd" id="2_0m1dk"]
+[ext_resource type="AudioStream" uid="uid://b0m6bfywmb6gy" path="res://temp_fx.wav" id="3_nlbad"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_og5ay")
+
+[node name="Title Screen" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Title Screen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Title Screen/CenterContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Title Screen/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "The Greatest Game Ever"
+
+[node name="Start Game" type="Button" parent="Title Screen/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Start Game"
+
+[node name="Options" type="Button" parent="Title Screen/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Options"
+
+[node name="Options Screen" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_0m1dk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options Screen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -352.0
+offset_top = -29.0
+offset_right = 352.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SFX" type="HBoxContainer" parent="Options Screen/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options Screen/VBoxContainer/SFX"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 40
+text = "SFX Volume:"
+
+[node name="MarginContainer" type="MarginContainer" parent="Options Screen/VBoxContainer/SFX"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSlider" type="HSlider" parent="Options Screen/VBoxContainer/SFX/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.1
+value = 1.0
+tick_count = 11
+ticks_on_borders = true
+
+[node name="BGM" type="HBoxContainer" parent="Options Screen/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options Screen/VBoxContainer/BGM"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 40
+text = "BGM Volume:"
+
+[node name="MarginContainer" type="MarginContainer" parent="Options Screen/VBoxContainer/BGM"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSlider" type="HSlider" parent="Options Screen/VBoxContainer/BGM/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.1
+tick_count = 11
+ticks_on_borders = true
+
+[node name="CenterContainer" type="CenterContainer" parent="Options Screen/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Options Screen/VBoxContainer/CenterContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Back"
+
+[node name="SFX Preview" type="AudioStreamPlayer" parent="Options Screen"]
+stream = ExtResource("3_nlbad")
+bus = &"SFX"
+
+[connection signal="pressed" from="Title Screen/CenterContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="value_changed" from="Options Screen/VBoxContainer/SFX/MarginContainer/HSlider" to="Options Screen" method="_on_sfx_volume_slider_value_changed"]
+[connection signal="value_changed" from="Options Screen/VBoxContainer/BGM/MarginContainer/HSlider" to="Options Screen" method="_on_bgm_volume_slider_value_changed"]
+[connection signal="pressed" from="Options Screen/VBoxContainer/CenterContainer/Button" to="." method="_on_button_pressed"]

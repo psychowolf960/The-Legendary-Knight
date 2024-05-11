@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://ckpi14xmoa18x"]
+
+[node name="KnockZone" type="Area2D"]
