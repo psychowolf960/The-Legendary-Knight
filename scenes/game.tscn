@@ -726,9 +726,9 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 57.0
+offset_left = 5.0
 offset_top = 3.0
-offset_right = -57.0
+offset_right = -5.0
 offset_bottom = 131.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -741,6 +741,8 @@ theme = ExtResource("18_fof5s")
 script = ExtResource("19_f11v8")
 dialogue_data = ExtResource("20_kvy1n")
 start_id = "START"
+options_vertical = true
+options_position = 2
 custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_5wal2"), SubResource("RichTextEffect_56tho")])
 
 [node name="Coyote" type="Timer" parent="Player"]

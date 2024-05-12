@@ -9,31 +9,83 @@ starts = {
 }
 nodes = {
 "0_1": {
-"link": &"1_1",
-"offset": Vector2(-384.489, 365.102),
+"link": &"1_3",
+"offset": Vector2(20, 420),
 "start_id": "START"
 },
 "1_1": {
-"dialogue": "Do you have childrens in your basement?",
-"offset": Vector2(-120, 140),
+"dialogue": "Ahaha very funny, but what's your real name?",
+"offset": Vector2(1080, 340),
+"options": {
+0: {
+"condition": {},
+"link": &"1_4",
+"text": "The Legendary Knight"
+},
+1: {
+"condition": {},
+"link": &"1_1",
+"text": "The Shovel Knight"
+},
+2: {
+"condition": {},
+"link": &"1_1",
+"text": "The Stinky Knight"
+},
+3: {
+"condition": {},
+"link": &"1_1",
+"text": "The Cotton Princess"
+}
+},
+"size": Vector2(300, 240),
+"speaker": 0
+},
+"1_2": {
+"dialogue": "Who should i thank for this .handy intervention?",
+"offset": Vector2(600, 360),
+"options": {
+0: {
+"condition": {},
+"link": &"1_4",
+"text": "The Legendary Knight"
+},
+1: {
+"condition": {},
+"link": &"1_1",
+"text": "The Shovel Knight"
+},
+2: {
+"condition": {},
+"link": &"1_1",
+"text": "The Stinky Knight"
+},
+3: {
+"condition": {},
+"link": &"1_1",
+"text": "The Cotton Princess"
+}
+},
+"size": Vector2(300, 240.001),
+"speaker": 0
+},
+"1_3": {
+"dialogue": "Ugh dead slime odor is more unpleaseant than what i tought. Anyway, thank you for helping with these slimes kind stranger, even if the great BILDUR had the situation in TOTAL CONTROL!
+",
+"offset": Vector2(260, 360),
 "options": {
 0: {
 "condition": {},
 "link": &"1_2",
-"text": "Yes"
-},
-1: {
-"condition": {},
-"link": &"1_3",
-"text": "No"
+"text": ""
 }
 },
-"size": Vector2(300, 240),
-"speaker": -1
+"size": Vector2(300, 240.001),
+"speaker": 0
 },
-"1_2": {
-"dialogue": "Not cool dude",
-"offset": Vector2(360, -100),
+"1_4": {
+"dialogue": "Very Modest, i aprreciate it",
+"offset": Vector2(1080, 40),
 "options": {
 0: {
 "condition": {},
@@ -42,22 +94,9 @@ nodes = {
 }
 },
 "size": Vector2(300, 240),
-"speaker": "Bildur"
-},
-"1_3": {
-"dialogue": "Yay me too totally",
-"offset": Vector2(375.273, 286.91),
-"options": {
-0: {
-"condition": {},
-"link": "END",
-"text": ""
-}
-},
-"size": Vector2(300, 240),
-"speaker": "Bildur"
+"speaker": 0
 }
 }
 variables = {}
 strays = Array[String]([])
-characters = "res://dialogue/Characters.tres"
+characters = "res://dialogue/characters.tres"
