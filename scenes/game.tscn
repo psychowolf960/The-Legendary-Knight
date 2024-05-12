@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cuv4vme4rwno0"]
+[gd_scene load_steps=41 format=3 uid="uid://cuv4vme4rwno0"]
 
 [ext_resource type="PackedScene" uid="uid://dqnaqj8yb6hwd" path="res://scenes/player.tscn" id="1_rbmkf"]
 [ext_resource type="Script" path="res://scripts/gamemanager.gd" id="1_uilpq"]
@@ -14,6 +14,16 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="12_jrxog"]
 [ext_resource type="PackedScene" uid="uid://ckpi14xmoa18x" path="res://scenes/knockzone.tscn" id="13_aomcp"]
 [ext_resource type="Script" path="res://scenes/knockzone.gd" id="14_pbi6h"]
+[ext_resource type="Texture2D" uid="uid://cyfxuch6qa87f" path="res://icon.svg" id="15_aw4xp"]
+[ext_resource type="AudioStream" uid="uid://chhyiookx3ilk" path="res://assets/sounds/power_up.wav" id="15_o3k8g"]
+[ext_resource type="Texture2D" uid="uid://bfo5qlbc2ec4j" path="res://assets/sprites/characters/Basic Asset Pack/Basic Humanoid Animations/halfling bard/HalflingBard.png" id="17_r20km"]
+[ext_resource type="Script" path="res://scripts/dialogue.gd" id="18_13u5w"]
+[ext_resource type="Theme" uid="uid://c7sdrp3ltdq24" path="res://addons/dialogue_nodes/themes/pixelart.theme" id="18_fof5s"]
+[ext_resource type="PackedScene" uid="uid://c8fdldchmqttb" path="res://scenes/actionable.tscn" id="18_tynud"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/dialogueBox.gd" id="19_f11v8"]
+[ext_resource type="Resource" uid="uid://dvbam5b1s5swm" path="res://dialogue/intro.tres" id="20_kvy1n"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeWait.gd" id="21_aphua"]
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/bbcodeGhost.gd" id="22_kbavu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ij0ku"]
 texture = ExtResource("3_efh33")
@@ -572,6 +582,12 @@ terrain_set_0/terrain_1/name = "Grass"
 terrain_set_0/terrain_1/color = Color(0.352941, 0.584314, 0.211765, 1)
 sources/0 = SubResource("TileSetAtlasSource_ij0ku")
 
+[sub_resource type="RichTextEffect" id="RichTextEffect_5wal2"]
+script = ExtResource("21_aphua")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_56tho"]
+script = ExtResource("22_kbavu")
+
 [sub_resource type="Animation" id="Animation_apgth"]
 length = 0.001
 tracks/0/type = "value"
@@ -617,7 +633,48 @@ transition = 0
 ease = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jkwee"]
-size = Vector2(20, 54)
+size = Vector2(26, 88.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xff7n"]
+size = Vector2(20, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_clbnu"]
+atlas = ExtResource("17_r20km")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyoc2"]
+atlas = ExtResource("17_r20km")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ck7ma"]
+atlas = ExtResource("17_r20km")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kkrgs"]
+atlas = ExtResource("17_r20km")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3mduv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_clbnu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gyoc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ck7ma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kkrgs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hfypf"]
 
 [node name="Game" type="Node2D"]
 
@@ -652,6 +709,39 @@ position = Vector2(34, 37)
 sfx_jump = ExtResource("6_tdvbu")
 
 [node name="Camera2D" parent="Player" instance=ExtResource("6_dc3lp")]
+
+[node name="Dialogues" type="Control" parent="Player/Camera2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -239.0
+offset_top = -136.0
+offset_right = 240.0
+offset_bottom = 134.0
+size_flags_vertical = 4
+script = ExtResource("18_13u5w")
+
+[node name="MarginContainer" type="MarginContainer" parent="Player/Camera2D/Dialogues"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 57.0
+offset_top = 3.0
+offset_right = -57.0
+offset_bottom = 131.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DialogueBox" type="Panel" parent="Player/Camera2D/Dialogues/MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(256, 128)
+layout_mode = 2
+theme = ExtResource("18_fof5s")
+script = ExtResource("19_f11v8")
+dialogue_data = ExtResource("20_kvy1n")
+start_id = "START"
+custom_effects = Array[RichTextEffect]([SubResource("RichTextEffect_5wal2"), SubResource("RichTextEffect_56tho")])
 
 [node name="Coyote" type="Timer" parent="Player"]
 wait_time = 0.2
@@ -757,13 +847,39 @@ limit_right = 1000
 limit_bottom = 280
 limit_target = NodePath("../TileMap")
 
-[node name="KnockZone" parent="." instance=ExtResource("13_aomcp")]
-collision_layer = 2
+[node name="WaterWall" type="Node2D" parent="."]
+position = Vector2(27, 114)
+
+[node name="KnockZone" parent="WaterWall" instance=ExtResource("13_aomcp")]
+collision_mask = 2
 script = ExtResource("14_pbi6h")
+stream = ExtResource("15_o3k8g")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KnockZone"]
-position = Vector2(-2, 32)
+[node name="Areadetector" type="CollisionShape2D" parent="WaterWall/KnockZone"]
+position = Vector2(160, -44.75)
 shape = SubResource("RectangleShape2D_jkwee")
-disabled = true
 
-[connection signal="body_entered" from="KnockZone" to="Player" method="_on_knock_zone_body_entered"]
+[node name="Sprite" type="Sprite2D" parent="WaterWall/KnockZone"]
+position = Vector2(160, -43)
+scale = Vector2(0.15625, 0.625)
+texture = ExtResource("15_aw4xp")
+
+[node name="Water" type="StaticBody2D" parent="WaterWall"]
+
+[node name="Collider" type="CollisionShape2D" parent="WaterWall/Water"]
+position = Vector2(160, -43)
+shape = SubResource("RectangleShape2D_xff7n")
+
+[node name="Bildur" type="AnimatedSprite2D" parent="."]
+position = Vector2(-39, -24)
+sprite_frames = SubResource("SpriteFrames_3mduv")
+autoplay = "default"
+
+[node name="Actionable" parent="Bildur" instance=ExtResource("18_tynud")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bildur/Actionable"]
+scale = Vector2(1.29, 1.29)
+shape = SubResource("RectangleShape2D_hfypf")
+
+[connection signal="body_entered" from="WaterWall/KnockZone" to="WaterWall/KnockZone" method="_on_body_entered"]
+[connection signal="area_entered" from="Bildur/Actionable" to="Bildur/Actionable" method="_on_area_entered"]

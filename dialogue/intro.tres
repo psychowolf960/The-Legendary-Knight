@@ -1,0 +1,63 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://dvbam5b1s5swm"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_4iy2u"]
+
+[resource]
+script = ExtResource("1_4iy2u")
+starts = {
+"START": &"0_1"
+}
+nodes = {
+"0_1": {
+"link": &"1_1",
+"offset": Vector2(-384.489, 365.102),
+"start_id": "START"
+},
+"1_1": {
+"dialogue": "Do you have childrens in your basement?",
+"offset": Vector2(-120, 140),
+"options": {
+0: {
+"condition": {},
+"link": &"1_2",
+"text": "Yes"
+},
+1: {
+"condition": {},
+"link": &"1_3",
+"text": "No"
+}
+},
+"size": Vector2(300, 240),
+"speaker": -1
+},
+"1_2": {
+"dialogue": "Not cool dude",
+"offset": Vector2(360, -100),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Bildur"
+},
+"1_3": {
+"dialogue": "Yay me too totally",
+"offset": Vector2(375.273, 286.91),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": "Bildur"
+}
+}
+variables = {}
+strays = Array[String]([])
+characters = "res://dialogue/Characters.tres"

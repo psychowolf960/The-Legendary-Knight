@@ -95,13 +95,13 @@ func _on_play_pressed():
 	if selected_level == world_4:
 		get_tree().change_scene_to_file("res://scenes/game.tscn")
 	elif selected_level == world_1:
-		get_tree().change_scene_to_file("res://scenes/prudence.tscn")
+		get_tree().change_scene_to_file("res://scenes/game.tscn")
 	elif selected_level == world_2:
-		print("world2")
+		get_tree().change_scene_to_file("res://scenes/game.tscn")
 	elif selected_level == world_3:
-		print("world3")
+		get_tree().change_scene_to_file("res://scenes/game.tscn")
 	elif selected_level == world_4:
-		print("world4")
+		get_tree().change_scene_to_file("res://scenes/game.tscn")
 	Audiomanager.play_sound(stream, dB)
 
 

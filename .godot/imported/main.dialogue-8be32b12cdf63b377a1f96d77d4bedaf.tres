@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_4vm0l"]
+
+[resource]
+script = ExtResource("1_4vm0l")
+using_states = PackedStringArray()
+titles = {}
+character_names = PackedStringArray("Nathan")
+first_title = "1"
+lines = {
+"1": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "1",
+"next_id": "3",
+"next_id_after": "3",
+"notes": "",
+"responses": PackedStringArray("1"),
+"tags": PackedStringArray(),
+"text": "Start",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Start",
+"type": &"response"
+},
+"3": {
+"character": "Nathan",
+"character_replacements": Array[Dictionary]([]),
+"id": "3",
+"next_id": "5",
+"notes": "",
+"tags": PackedStringArray(),
+"text": "Hi Coco!",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Hi Coco!",
+"type": &"dialogue"
+},
+"5": {
+"id": "5",
+"is_snippet": false,
+"next_id": "end!",
+"type": &"goto"
+}
+}
+raw_text = "- Start
+
+Nathan : Hi Coco!
+
+=> END!"
+metadata/dialogue_manager_version = "2.39.0"
