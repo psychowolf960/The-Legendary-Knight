@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3aw76qn8jmgb"]
+
+[ext_resource type="Texture2D" uid="uid://bfo5qlbc2ec4j" path="res://assets/sprites/characters/Basic Asset Pack/Basic Humanoid Animations/halfling bard/HalflingBard.png" id="1_1aaxj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_clbnu"]
+atlas = ExtResource("1_1aaxj")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyoc2"]
+atlas = ExtResource("1_1aaxj")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ck7ma"]
+atlas = ExtResource("1_1aaxj")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kkrgs"]
+atlas = ExtResource("1_1aaxj")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3mduv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_clbnu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gyoc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ck7ma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kkrgs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Bildur" type="AnimatedSprite2D"]
+position = Vector2(-39, -24)
+scale = Vector2(1.29, 1.29)
+sprite_frames = SubResource("SpriteFrames_3mduv")
+autoplay = "default"

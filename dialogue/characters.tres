@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="CharacterList" load_steps=5 format=3 uid="uid://c303qivlsn30t"]
+[gd_resource type="Resource" script_class="CharacterList" load_steps=7 format=3 uid="uid://c303qivlsn30t"]
 
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/CharacterList.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://bsbmugxesyv7t" path="res://assets/sprites/characters/bildur.png" id="1_82ro0"]
 [ext_resource type="Script" path="res://addons/dialogue_nodes/objects/Character.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://cvckn34n7v875" path="res://assets/sprites/characters/knight.png" id="3_vb34v"]
 
 [sub_resource type="Resource" id="2"]
 script = ExtResource("2")
@@ -10,6 +11,12 @@ name = "Bildur"
 image = ExtResource("1_82ro0")
 color = Color(0.227451, 0.231373, 0.768627, 1)
 
+[sub_resource type="Resource" id="Resource_mjfp2"]
+script = ExtResource("2")
+name = "The Legendary knight"
+image = ExtResource("3_vb34v")
+color = Color(1, 1, 1, 1)
+
 [resource]
 script = ExtResource("1")
-characters = Array[ExtResource("2")]([SubResource("2")])
+characters = Array[ExtResource("2")]([SubResource("2"), SubResource("Resource_mjfp2")])

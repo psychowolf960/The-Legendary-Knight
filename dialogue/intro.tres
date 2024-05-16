@@ -38,7 +38,7 @@ nodes = {
 "text": "The Cotton Princess"
 }
 },
-"size": Vector2(300, 240),
+"size": Vector2(300, 248.5),
 "speaker": 0
 },
 "1_2": {
@@ -66,7 +66,7 @@ nodes = {
 "text": "The Cotton Princess"
 }
 },
-"size": Vector2(300, 240.001),
+"size": Vector2(300, 248.5),
 "speaker": 0
 },
 "1_3": {
@@ -89,12 +89,25 @@ nodes = {
 "options": {
 0: {
 "condition": {},
-"link": "END",
+"link": &"1_5",
 "text": ""
 }
 },
 "size": Vector2(300, 240),
 "speaker": 0
+},
+"1_5": {
+"dialogue": "Ik right? I found it all by myself",
+"offset": Vector2(1600, 0),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300, 240),
+"speaker": 1
 }
 }
 variables = {}

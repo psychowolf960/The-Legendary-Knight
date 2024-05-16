@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://d3j7wmcni00ws"]
+
+[node name="WaterWall" type="Node2D"]
+position = Vector2(27, 114)

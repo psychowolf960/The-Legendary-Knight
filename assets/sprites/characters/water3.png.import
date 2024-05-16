@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6mvquoxpanbj"
-path="res://.godot/imported/bildur_portrait.jpg-61026e2c359bff354363d5d4b41b94a6.ctex"
+uid="uid://dt55rsn2hy16g"
+path="res://.godot/imported/water3.png-dbd8ee3b1f2d74ef6fa722c758ae2b76.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/characters/bildur_portrait.jpg"
-dest_files=["res://.godot/imported/bildur_portrait.jpg-61026e2c359bff354363d5d4b41b94a6.ctex"]
+source_file="res://assets/sprites/characters/water3.png"
+dest_files=["res://.godot/imported/water3.png-dbd8ee3b1f2d74ef6fa722c758ae2b76.ctex"]
 
 [params]
 

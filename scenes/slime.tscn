@@ -54,6 +54,7 @@ frame = 2
 frame_progress = 0.722655
 
 [node name="Killzone" parent="." instance=ExtResource("2_aiwyj")]
+collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]

@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://cs0t2aeq67k2e"]
+
+[ext_resource type="Script" path="res://scripts/drainer.gd" id="1_5ptba"]
+[ext_resource type="Texture2D" uid="uid://cyfxuch6qa87f" path="res://icon.svg" id="4_e1dhn"]
+[ext_resource type="AudioStream" uid="uid://bv5pmdha600lx" path="res://assets/sounds/explosion.wav" id="6_hf34a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wjmbq"]
+size = Vector2(152, 152)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j53qs"]
+size = Vector2(142, 138)
+
+[node name="Drain" type="Node2D"]
+position = Vector2(27, 114)
+
+[node name="DrainZone" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 512
+script = ExtResource("1_5ptba")
+stream = ExtResource("6_hf34a")
+
+[node name="Areadetector" type="CollisionShape2D" parent="DrainZone"]
+position = Vector2(161, -46)
+shape = SubResource("RectangleShape2D_wjmbq")
+
+[node name="Drainer" type="StaticBody2D" parent="."]
+
+[node name="Collider" type="CollisionShape2D" parent="Drainer"]
+position = Vector2(162, -43)
+shape = SubResource("RectangleShape2D_j53qs")
+
+[node name="Sprite" type="Sprite2D" parent="Drainer"]
+position = Vector2(160, 21)
+texture = ExtResource("4_e1dhn")
+offset = Vector2(0, -64)
+
+[connection signal="area_entered" from="DrainZone" to="DrainZone" method="_on_area_entered"]

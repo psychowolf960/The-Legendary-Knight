@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dqnaqj8yb6hwd" path="res://scenes/player.tscn" id="6_5vdrb"]
 [ext_resource type="PackedScene" uid="uid://bo6kp1akmk3ey" path="res://scenes/killzone.tscn" id="7_qcbie"]
 [ext_resource type="PackedScene" uid="uid://bgv5v2fxqlswe" path="res://scenes/platform.tscn" id="8_3rcl6"]
-[ext_resource type="PackedScene" uid="uid://c2nwck2dncj7" path="res://scenes/goo.tscn" id="8_8u0ti"]
+[ext_resource type="PackedScene" path="res://scenes/goo.tscn" id="8_8u0ti"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rb6b2"]
 load_path = "res://.godot/imported/world_tileset.png-61a32465f33c3d9d3bfecb75b6485009.ctex"

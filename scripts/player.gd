@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-@onready var knock_zone = $"../WaterWall/KnockZone"
 @export var SPEED = 130.0
 @export var JUMP_VELOCITY = -300.0
 @export var sfx_jump : AudioStream
@@ -28,7 +27,7 @@ func on_actionable():
 	signalbus.emit_signal("dialogue")
 
 func _ready():
-	signalbus.connect("knock", on_knock_received) 
+	signalbus.connect("knock",on_knock_received) 
 	signalbus.connect("actionable", on_actionable)
 	
 var is_jumping = false
@@ -97,14 +96,14 @@ func _on_animated_sprite_2d_frame_changed():
 	if animated_sprite.frame in walk_frames : %sfx_player.play()
 
 
-func on_knock_received():
+func on_knock_received(knock_zone):
 	print("collided")
 	var collision_point = knock_zone.to_local(self.global_position)
 	var direction_to_self = knock_zone.global_position - collision_point
 	if animated_sprite.flip_h == false:
-		knockback = Vector2(-direction_to_self.x * -10, -500)
+		knockback = Vector2(-direction_to_self.x * 10, -1300)
 	else:
-		knockback = Vector2(-direction_to_self.x * 10, -500)
+		knockback = Vector2(-direction_to_self.x * -10, -1300)
 	animated_sprite.play("knocked")
 	signalbus.emit_signal("_hit")
 	knocked = true

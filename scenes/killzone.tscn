@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://d3ga5iqgco704" path="res://assets/sounds/hurt.wav" id="2_4v6pq"]
 
 [node name="Killzone" type="Area2D"]
-collision_layer = 2
+collision_layer = 128
 audio_bus_name = &"SFX"
 script = ExtResource("1_bq345")
 stream = ExtResource("2_4v6pq")
