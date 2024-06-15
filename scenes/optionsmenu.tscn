@@ -1,9 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://db2bhi47kg35o"]
+[gd_scene load_steps=2 format=3 uid="uid://db2bhi47kg35o"]
 
-[ext_resource type="Script" path="res://scripts/optionsmenu.gd" id="1_acygi"]
 [ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="2_ji6q1"]
-[ext_resource type="Theme" uid="uid://g5jumnfbow4v" path="res://assets/sprites/UI/Default.tres" id="2_p3ou5"]
-[ext_resource type="Script" path="res://scripts/OptionsScreen.gd" id="2_tne8a"]
 
 [node name="Options" type="Control"]
 layout_mode = 3
@@ -14,7 +11,6 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_acygi")
 
 [node name="OptionsScreen" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -23,12 +19,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_tne8a")
 
 [node name="Panel" type="Panel" parent="OptionsScreen"]
 texture_filter = 1
 layout_mode = 2
-theme = ExtResource("2_p3ou5")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="OptionsScreen"]
 layout_mode = 2
@@ -37,14 +31,12 @@ theme_override_constants/separation = 20
 
 [node name="Volume" type="Button" parent="OptionsScreen/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_p3ou5")
 theme_override_fonts/font = ExtResource("2_ji6q1")
 theme_override_font_sizes/font_size = 72
 text = "Volume"
 
 [node name="Back" type="Button" parent="OptionsScreen/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_p3ou5")
 theme_override_fonts/font = ExtResource("2_ji6q1")
 theme_override_font_sizes/font_size = 72
 text = "Back"
@@ -66,6 +58,3 @@ layout_mode = 2
 text = "SFX"
 
 [node name="SFXPreview" type="AudioStreamPlayer" parent="OptionsScreen"]
-
-[connection signal="pressed" from="OptionsScreen/VBoxContainer/Volume" to="." method="_on_volume_pressed"]
-[connection signal="pressed" from="OptionsScreen/VBoxContainer/Back" to="." method="_on_back_pressed"]

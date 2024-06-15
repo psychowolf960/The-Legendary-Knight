@@ -21,6 +21,7 @@ signalbus="*res://scripts/signalbus.gd"
 Gamemanager="*res://scripts/gamemanager.gd"
 Audiomanager="*res://scripts/audiomanager.gd"
 Options="*res://scripts/Options.gd"
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [display]
 
